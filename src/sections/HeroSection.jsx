@@ -14,6 +14,15 @@ export function HeroSection() {
 
       <div className="container">
         <div className="hero__content">
+          <div className="hero__avatar">
+            <div className="hero__avatar-ring">
+              <img
+                src="https://i.postimg.cc/wBfGkhyw/Whats-App-Image-2026-02-15-at-22-14-05.jpg"
+                alt="Rajat Yadav"
+                className="hero__avatar-img"
+              />
+            </div>
+          </div>
           <span className="hero__greeting">{heroContent.greeting}</span>
           <h1 className="hero__name">{heroContent.name}</h1>
           <p className="hero__title">{heroContent.title}</p>
