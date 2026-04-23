@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { ThemeToggle } from './ThemeToggle';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,7 +57,6 @@ export function Navigation() {
         </div>
 
         <div className="nav-actions">
-          <ThemeToggle />
           <button
             className={`nav-hamburger ${isMobileOpen ? 'nav-hamburger--open' : ''}`}
             onClick={() => setIsMobileOpen(!isMobileOpen)}
