@@ -22,7 +22,7 @@ export function useScrollReveal(options = {}) {
     return () => {
       if (element) observer.unobserve(element);
     };
-  }, []);
+  }, [options.threshold, options.rootMargin]);
 
   return ref;
 }

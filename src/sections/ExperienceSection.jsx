@@ -12,7 +12,6 @@ export function ExperienceSection() {
         />
 
         <div className="experience__wrapper">
-          {/* Learning Journey */}
           <div className="experience__column">
             <h3 className="subsection-title">
               <span className="subsection-icon">🚀</span>
@@ -33,7 +32,6 @@ export function ExperienceSection() {
             </div>
           </div>
 
-          {/* Education */}
           <div className="experience__column">
             <h3 className="subsection-title">
               <span className="subsection-icon">🎓</span>

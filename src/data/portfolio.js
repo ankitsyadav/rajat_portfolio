@@ -13,7 +13,7 @@ const portfolioData = {
     phone: '+919837837902',
     location: 'Noida, Uttar Pradesh, India',
     linkedin: 'https://www.linkedin.com/in/rajatydv2930',
-    github: 'https://github.com',
+    github: 'https://github.com/rajatydv001',
   },
 
   // ─── Hero Section ────────────────────────────
@@ -51,29 +51,21 @@ const portfolioData = {
     title: 'Skills & Expertise',
     subtitle: 'Technologies I work with to bring ideas to life',
     categories: [
-     
       {
-        name: 'Languages & Core <=> Frontend Concepts <=> Tools & Workflow ',
-        icon: '💻',
-        skills: [
-          'JavaScript (ES6+)', 'HTML5', 'CSS3', 'React.js',
-          'DOM Manipulation',
-          'Responsive Design',
-          'Flexbox & Grid',
-          'API Integration (Fetch / Axios)',
-          'Component Architecture',
-          'State Management (useState, useEffect)',
-          'Props & Lifting State',
-          'Conditional Rendering',
-          'Git & GitHub',
-          'Vite',
-          'VS Code',
-          'Chrome DevTools',
-          'npm',
-          'Terminal / CLI'
-        ],
-      }
-      
+        name: 'Frontend Development',
+        icon: '⚛️',
+        skills: ['React.js', 'JavaScript (ES6+)', 'TypeScript', 'HTML5', 'CSS3', 'Responsive Design', 'Flexbox & Grid'],
+      },
+      {
+        name: 'Modern Tools',
+        icon: '🚀',
+        skills: ['Vite', 'Git & GitHub', 'VS Code', 'Chrome DevTools', 'npm', 'Terminal / CLI', 'Tailwind CSS'],
+      },
+      {
+        name: 'Core Concepts',
+        icon: '🧠',
+        skills: ['State Management (useState, useEffect)', 'Component Architecture', 'API Integration (Fetch)', 'DOM Manipulation', 'Conditional Rendering', 'Context API'],
+      },
     ],
   },
 
@@ -81,6 +73,70 @@ const portfolioData = {
   projects: [
     {
       id: 1,
+      title: 'NectarNest - Pure Raw Honey Store',
+      category: 'React',
+      description:
+        'A premium e-commerce website for raw honey products featuring product catalog, shopping cart functionality, and a beautiful responsive design with smooth navigation.',
+      techStack: ['React', 'CSS3', 'Vite', 'Vercel'],
+      features: [
+        'Product catalog with categories and filtering',
+        'Shopping cart functionality',
+        'Responsive design for all devices',
+        'Modern UI with smooth animations',
+      ],
+      demoLink: 'https://nectar-nest-gray.vercel.app/',
+      githubLink: 'https://github.com/rajatydv001/nectar-nest',
+    },
+    {
+      id: 2,
+      title: 'Portfolio Website',
+      category: 'React',
+      description:
+        'Personal portfolio built with React and Vite featuring modern responsive design, smooth scroll animations, and clean component-based architecture.',
+      techStack: ['React', 'Vite', 'CSS3', 'Vercel'],
+      features: [
+        'Component-driven architecture',
+        'Smooth scroll and reveal animations',
+        'Responsive design for all devices',
+        'Clean and maintainable code structure',
+      ],
+      demoLink: 'https://rajat-yadav-portfolio.vercel.app/',
+      githubLink: 'https://github.com/rajatydv001/portfolio',
+    },
+    {
+      id: 3,
+      title: 'Weather Dashboard',
+      category: 'React',
+      description:
+        'A weather application built with React that displays current weather and forecast data. Features search functionality, temperature conversion, and dynamic weather icons.',
+      techStack: ['React', 'CSS3', 'OpenWeather API', 'Vite'],
+      features: [
+        'React Hooks (useState, useEffect) for state management',
+        'Asynchronous data fetching with Fetch API',
+        'Dynamic UI updates based on weather conditions',
+        'Responsive design with weather-appropriate themes',
+      ],
+      demoLink: 'https://weather-dashboard-rho.vercel.app/',
+      githubLink: 'https://github.com/rajatydv001/weather-dashboard',
+    },
+    {
+      id: 4,
+      title: 'Task Manager App',
+      category: 'React',
+      description:
+        'A task management application with features to add, edit, delete, and mark tasks as complete. Uses React state management and persists data in localStorage.',
+      techStack: ['React', 'CSS3', 'LocalStorage', 'Vite'],
+      features: [
+        'CRUD operations for task management',
+        'useState for managing application state',
+        'Local storage integration for data persistence',
+        'Filter tasks by status (All/Active/Completed)',
+      ],
+      demoLink: 'https://task-manager-app-sand.vercel.app/',
+      githubLink: 'https://github.com/rajatydv001/task-manager',
+    },
+    {
+      id: 5,
       title: 'Stone Paper Scissor Game',
       category: 'JavaScript',
       description:
@@ -96,11 +152,11 @@ const portfolioData = {
       githubLink: 'https://github.com/rajatydv001/Stone_Paper_Scissor_project-',
     },
     {
-      id: 2,
+      id: 6,
       title: 'Tic Tac Toe Game',
       category: 'JavaScript',
       description:
-        'A fully functional Tic Tac Toe game built from scratch with vanilla JavaScript. Features structured game state management, winner detection algorithm, and clean DOM manipulation without external libraries.',
+        'A fully functional Tic Tac Toe game built from scratch with vanilla JavaScript. Features structured game state management, winner detection algorithm, and clean DOM manipulation.',
       techStack: ['JavaScript', 'HTML5', 'CSS3', 'Vercel'],
       features: [
         'Structured Game State Management',
@@ -120,11 +176,11 @@ const portfolioData = {
       role: 'Self-Learning & Building Projects',
       company: 'Independent',
       location: 'Remote',
-      period: '2024 — Present',
+      period: '2024 — 2026',
       description:
         'Dedicated self-study in JavaScript, React, and modern frontend development. Building real-world projects, contributing to open-source, and continuously improving development skills.',
       highlights: [
-        'Built 2+ frontend projects from scratch using React & JavaScript',
+        'Built 6 frontend projects from scratch using React & JavaScript',
         'Learned React Hooks, Context API, and component architecture',
         'Practiced responsive design with Flexbox & CSS Grid',
         'Integrated RESTful APIs using Fetch and Axios',
@@ -132,6 +188,20 @@ const portfolioData = {
         'Focused on clean code, performance optimization, and accessibility',
       ],
       technologies: ['JavaScript', 'React', 'HTML5', 'CSS3', 'Git', 'Vite'],
+    },
+  ],
+
+  // ─── Certifications ───────────────────────────
+  certifications: [
+    {
+      name: 'JavaScript & React Development',
+      issuer: 'Namaste Dev',
+      year: '2024',
+    },
+    {
+      name: 'React.js Essential Training',
+      issuer: 'LinkedIn Learning',
+      year: '2024',
     },
   ],
 
@@ -178,6 +248,7 @@ export const skills = portfolioData.skills;
 export const projects = portfolioData.projects;
 export const experience = portfolioData.experience;
 export const education = portfolioData.education;
+export const certifications = portfolioData.certifications;
 export const socialLinks = portfolioData.socialLinks;
 
 export default portfolioData;

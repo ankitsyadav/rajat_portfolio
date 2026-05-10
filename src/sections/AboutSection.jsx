@@ -35,19 +35,18 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Decorative stats */}
         <div className="about__stats">
           <div className="stat-card">
-            <span className="stat-number">10+</span>
+            <span className="stat-number">6+</span>
             <span className="stat-label">Projects Built</span>
           </div>
           <div className="stat-card">
-            <span className="stat-number">6+</span>
+            <span className="stat-number">18+</span>
             <span className="stat-label">Technologies</span>
           </div>
           <div className="stat-card">
-            <span className="stat-number">1000+</span>
-            <span className="stat-label">Hours Coding</span>
+            <span className="stat-number">2+</span>
+            <span className="stat-label">Years Learning</span>
           </div>
           <div className="stat-card">
             <span className="stat-number">∞</span>
