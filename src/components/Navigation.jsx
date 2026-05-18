@@ -44,9 +44,7 @@ export function Navigation() {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           aria-label="Rajat Yadav - Back to top"
         >
-          <span className="logo-bracket">&lt;</span>
-          <span className="logo-text">RY</span>
-          <span className="logo-bracket"> /&gt;</span>
+          <span className="logo-text">RAJAT</span>
         </button>
 
         <div className={`nav-menu ${isMobileOpen ? 'nav-menu--open' : ''}`}>
@@ -63,7 +61,6 @@ export function Navigation() {
         </div>
 
         <div className="nav-actions">
-          <ThemeToggle />
           <button
             className={`nav-hamburger ${isMobileOpen ? 'nav-hamburger--open' : ''}`}
             onClick={() => setIsMobileOpen(!isMobileOpen)}
