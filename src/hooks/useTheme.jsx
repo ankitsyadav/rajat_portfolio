@@ -16,9 +16,11 @@ export function ThemeProvider({ children }) {
     const html = document.documentElement;
     if (isDark) {
       html.setAttribute('data-theme', 'dark');
+      html.classList.add('dark');
       localStorage.setItem('theme-preference', 'dark');
     } else {
       html.setAttribute('data-theme', 'light');
+      html.classList.remove('dark');
       localStorage.setItem('theme-preference', 'light');
     }
   }, [isDark]);
