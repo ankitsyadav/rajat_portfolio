@@ -5,7 +5,7 @@
 const portfolioData = {
   // ─── Personal Info ───────────────────────────
   personalInfo: {
-    name: 'Rajat Yadav',
+    name: 'RAJAT YADAV',
     title: 'Self-Taught JavaScript & React Developer',
     tagline:
       'Frontend Developer passionate about building clean, responsive, and interactive web applications using JavaScript and React.',
@@ -19,7 +19,7 @@ const portfolioData = {
   // ─── Hero Section ────────────────────────────
   hero: {
     greeting: "Hello, I'm",
-    name: 'Rajat Yadav',
+    name: 'RAJAT YADAV',
     title: 'Self-Taught JavaScript & React Developer',
     summary:
       'I build clean, responsive, and interactive web applications from scratch using modern JavaScript and React. Passionate about pixel-perfect UI, component-driven architecture, and writing code that scales.',
@@ -30,19 +30,19 @@ const portfolioData = {
   // ─── About Section ───────────────────────────
   about: {
     title: 'About Me',
-    subtitle: 'Frontend-focused. Self-taught. Always building.',
+    subtitle: 'Frontend Developer. React Enthusiast. Lifelong Learner.',
     paragraphs: [
-      "I'm a self-learned frontend developer with a deep passion for JavaScript and React. My journey started with curiosity — dissecting how websites work — and evolved into building complete applications from scratch.",
-      "I believe in learning by doing. Every project I build pushes me to explore new patterns, improve performance, and write cleaner code. I focus on responsive UI development, reusable component architecture, and modern ES6+ JavaScript.",
-      "When I'm not coding, I'm reading documentation, watching tutorials, or experimenting with new React patterns. I'm driven by the belief that great software starts with a great frontend experience.",
+      "I'm a frontend developer who turns ideas into responsive, interactive web experiences using React.js and modern JavaScript. With a strong foundation in component-driven architecture and a keen eye for UI detail, I build applications that are both functional and polished.",
+      'My approach combines hands-on project experience with a solid understanding of the full development lifecycle — from structuring reusable components and managing state to integrating REST APIs and optimizing for performance across devices.',
+      "Beyond code, my background in business analytics gives me a unique perspective on building user-focused solutions that align with real-world goals. I'm always exploring new tools and patterns to write cleaner, more scalable code.",
     ],
     highlights: [
-      'Self-learned developer with strong JavaScript fundamentals',
-      'Built multiple frontend projects from scratch',
-      'Focus on performance, UI clarity, and reusable components',
-      'Passionate about problem solving and clean code',
-      'Learning modern React ecosystem (Hooks, Context, Routing)',
-      'Responsive design across all device sizes',
+      'Strong command of React.js, JavaScript (ES6+), HTML5, and CSS3',
+      'Experienced with responsive design, state management, and API integration',
+      'Built diverse projects — e-commerce, CRM dashboards, and interactive web apps',
+      'Business analytics background for user-centric, goal-aligned development',
+      'Proficient with Git, Vite, Tailwind CSS, and modern dev tooling',
+      'Focused on clean code, performance optimization, and maintainable architecture',
     ],
   },
 
@@ -73,6 +73,44 @@ const portfolioData = {
   projects: [
     {
       id: 1,
+      title: 'AI Spend Audit',
+      category: 'Full Stack',
+      description:
+        'A production-grade SaaS platform to audit, optimize, and reduce AI tool spending. Features AI-powered insights, team collaboration, subscription billing, and an advanced analytics dashboard.',
+      techStack: ['TypeScript', 'Next.js', 'PostgreSQL', 'Tailwind CSS', 'Prisma', 'Stripe', 'NextAuth'],
+      features: [
+        'Multi-tool audit engine (ChatGPT, Claude, Cursor, Copilot, Gemini, Windsurf, Open AI, Anthropic)',
+        'AI-powered optimization recommendations with alternative suggestions',
+        'Stripe subscription billing with Free/Pro/Enterprise tiered plans',
+        'Advanced analytics dashboard with interactive Recharts + Framer Motion',
+        'NextAuth v5 authentication with Google & GitHub OAuth',
+        'Team role-based access control (Admin, Analyst, Viewer)',
+        'Real-time savings calculations and ROI analysis',
+        'Weekly email digests and overspending alerts',
+      ],
+      demoLink: 'https://ai-spend-audit.vercel.app',
+      githubLink: 'https://github.com/rajatydv001/ai-spend-audit',
+    },
+    {
+      id: 2,
+      title: 'LeadFlow Pro',
+      category: 'Full Stack',
+      description:
+        'An automated lead capture and enrichment system. Captures leads from a web form, enriches company data via Clearbit API and web scraping, generates branded PDF audit reports, and delivers them via email.',
+      techStack: ['Python', 'Flask', 'JavaScript', 'HTML5', 'CSS3', 'Clearbit API', 'SMTP'],
+      features: [
+        'Professional lead intake form with client and server-side validation',
+        'Automated company research using Clearbit API and intelligent web scraping',
+        'Branded, personalized PDF business audit reports with custom styling',
+        'Automated email delivery with PDF attachment via SMTP',
+        'Google Sheets integration for lead logging (bonus feature)',
+        'Google Drive archiving for generated PDF reports (bonus feature)',
+      ],
+      demoLink: 'https://leadflow-pro-orphin.vercel.app',
+      githubLink: 'https://github.com/rajatydv001/leadflow-pro',
+    },
+    {
+      id: 3,
       title: 'NectarNest - Pure Raw Honey Store',
       category: 'React',
       description:
@@ -88,7 +126,7 @@ const portfolioData = {
       githubLink: 'https://github.com/rajatydv001/nectar-nest',
     },
     {
-      id: 2,
+      id: 4,
       title: 'Portfolio Website',
       category: 'React',
       description:
@@ -102,38 +140,6 @@ const portfolioData = {
       ],
       demoLink: 'https://rajat-yadav-portfolio.vercel.app/',
       githubLink: 'https://github.com/rajatydv001/portfolio',
-    },
-    {
-      id: 3,
-      title: 'Weather Dashboard',
-      category: 'React',
-      description:
-        'A weather application built with React that displays current weather and forecast data. Features search functionality, temperature conversion, and dynamic weather icons.',
-      techStack: ['React', 'CSS3', 'OpenWeather API', 'Vite'],
-      features: [
-        'React Hooks (useState, useEffect) for state management',
-        'Asynchronous data fetching with Fetch API',
-        'Dynamic UI updates based on weather conditions',
-        'Responsive design with weather-appropriate themes',
-      ],
-      demoLink: 'https://weather-dashboard-rho.vercel.app/',
-      githubLink: 'https://github.com/rajatydv001/weather-dashboard',
-    },
-    {
-      id: 4,
-      title: 'Task Manager App',
-      category: 'React',
-      description:
-        'A task management application with features to add, edit, delete, and mark tasks as complete. Uses React state management and persists data in localStorage.',
-      techStack: ['React', 'CSS3', 'LocalStorage', 'Vite'],
-      features: [
-        'CRUD operations for task management',
-        'useState for managing application state',
-        'Local storage integration for data persistence',
-        'Filter tasks by status (All/Active/Completed)',
-      ],
-      demoLink: 'https://task-manager-app-sand.vercel.app/',
-      githubLink: 'https://github.com/rajatydv001/task-manager',
     },
     {
       id: 5,
@@ -167,12 +173,61 @@ const portfolioData = {
       demoLink: 'https://tic-tac-toe-project-ashy.vercel.app/',
       githubLink: 'https://github.com/rajatydv001/Tic_Tac_Toe_project',
     },
+    {
+      id: 7,
+      title: 'Customer Churn Prediction',
+      category: 'Python',
+      description:
+        'A machine learning project analyzing American Express financial services customer data to predict churn. Trained Logistic Regression and Decision Tree models to identify churn drivers and recommend data-driven retention strategies.',
+      techStack: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Seaborn', 'Tableau', 'SQL'],
+      features: [
+        'Data extraction and preprocessing using SQL queries and Pandas',
+        'ML model training with Logistic Regression and Decision Tree classifiers',
+        'Identified key churn drivers through feature importance analysis',
+        'Interactive Tableau dashboards for business visualization',
+        'Published research paper with actionable retention recommendations',
+      ],
+      demoLink: null,
+      githubLink: 'https://github.com/rajatydv001/Churn_Prediction_Project',
+    },
   ],
 
   // ─── Experience / Journey ────────────────────
   experience: [
     {
       id: 1,
+      role: 'Software Engineer Intern',
+      company: 'SDLC Corp',
+      location: 'Remote',
+      period: 'Aug 2025 — Present',
+      description:
+        'Developing responsive and interactive web applications using React.js and modern frontend technologies. Collaborating with cross-functional teams to implement features, integrate REST APIs, and optimize deployment workflows.',
+      highlights: [
+        'Developed responsive web applications using React.js, JavaScript, HTML5, and CSS3',
+        'Integrated REST APIs and collaborated on frontend feature implementation',
+        'Worked on state management, authentication flows, and deployment workflows',
+        'Contributed to responsive design and reusable component architecture',
+      ],
+      technologies: ['React', 'JavaScript', 'HTML5', 'CSS3', 'REST APIs', 'Git'],
+    },
+    {
+      id: 2,
+      role: 'Supply/Demand Analyst Intern',
+      company: 'Stanza Living',
+      location: 'Noida, India',
+      period: 'Mar 2023 — Jul 2023',
+      description:
+        'Analyzed supply-demand data to support operational planning and business workflows. Used Excel and SQL for KPI tracking, reporting, and data-driven decision making.',
+      highlights: [
+        'Analyzed supply-demand data using Excel and SQL for KPI tracking',
+        'Generated reports to support operational planning',
+        'Collaborated with cross-functional teams on business workflows',
+        'Supported data-driven decision making through analysis and insights',
+      ],
+      technologies: ['Excel', 'SQL', 'Data Analysis', 'Reporting'],
+    },
+    {
+      id: 3,
       role: 'Self-Learning & Building Projects',
       company: 'Independent',
       location: 'Remote',
@@ -180,7 +235,7 @@ const portfolioData = {
       description:
         'Dedicated self-study in JavaScript, React, and modern frontend development. Building real-world projects, contributing to open-source, and continuously improving development skills.',
       highlights: [
-        'Built 6 frontend projects from scratch using React & JavaScript',
+        'Built 7 projects from scratch including Full Stack, React, and Python',
         'Learned React Hooks, Context API, and component architecture',
         'Practiced responsive design with Flexbox & CSS Grid',
         'Integrated RESTful APIs using Fetch and Axios',
