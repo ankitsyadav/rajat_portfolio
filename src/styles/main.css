@@ -158,7 +158,7 @@ p { color: var(--c-text-secondary); margin-bottom: 12px; }
   right: 0;
   z-index: 1000;
   height: var(--header-height);
-  background: rgba(255, 255, 255, 0.85);
+  background: transparent;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid transparent;
@@ -168,11 +168,6 @@ p { color: var(--c-text-secondary); margin-bottom: 12px; }
 .navigation--scrolled {
   border-bottom-color: var(--c-border);
   box-shadow: var(--shadow-sm);
-}
-
-:root.dark .navigation {
-  background: rgba(7, 10, 20, 0.85);
-  border-bottom-color: transparent;
 }
 
 :root.dark .navigation--scrolled {
