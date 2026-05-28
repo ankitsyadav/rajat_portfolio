@@ -72,23 +72,7 @@
 
 :focus:not(:focus-visible) { outline: none; }
 
-/* ── Dark Mode ──────────────────────────────────── */
-[data-theme='dark'], :root.dark {
-  --c-text: #e2e8f0;
-  --c-text-secondary: #94a3b8;
-  --c-text-muted: #64748b;
-  --c-bg: #070a14;
-  --c-bg-alt: #0b0f1a;
-  --c-bg-card: #111827;
-  --c-border: #1e293b;
-  --c-border-hover: #334155;
-  --gradient-card: linear-gradient(180deg, #111827 0%, #0b0f1a 100%);
-  --gradient-glow: linear-gradient(135deg, rgba(124, 58, 237, 0.5) 0%, rgba(6, 182, 212, 0.25) 100%);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.4);
-  --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.5);
-}
+/* Light Mode Only */
 
 /* ── Reset ──────────────────────────────────────── */
 *, *::before, *::after {
@@ -220,10 +204,7 @@ p { color: var(--c-text-secondary); margin-bottom: 12px; line-height: 1.7; lette
   box-shadow: var(--shadow-sm);
 }
 
-:root.dark .navigation--scrolled {
-  background: rgba(7, 10, 20, 0.95);
-  border-bottom-color: var(--c-border);
-}
+
 
 .nav-container {
   max-width: var(--max-w);
@@ -316,19 +297,7 @@ p { color: var(--c-text-secondary); margin-bottom: 12px; line-height: 1.7; lette
   font-weight: 600;
 }
 
-:root.dark .nav-links li button {
-  color: rgba(255, 255, 255, 0.75);
-}
 
-:root.dark .nav-links li button:hover {
-  color: #ffffff;
-  background: rgba(124, 58, 237, 0.15);
-}
-
-:root.dark .nav-links li.active button {
-  color: #ffffff;
-  background: rgba(124, 58, 237, 0.2);
-}
 
 .nav-cta {
   display: inline-flex;
@@ -523,9 +492,7 @@ p { color: var(--c-text-secondary); margin-bottom: 12px; line-height: 1.7; lette
     box-shadow: 0 6px 20px var(--c-primary-glow-strong);
     color: #fff;
   }
-  :root.dark .mobile-menu {
-    background: var(--c-bg-card);
-  }
+  
   .nav-cta { display: none; }
 }
 
