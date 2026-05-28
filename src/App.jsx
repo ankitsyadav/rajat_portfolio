@@ -42,11 +42,11 @@ function App() {
           <div className="footer-grid">
             <div className="footer-brand">
               <a href="#home" className="footer-logo-link">
-                <img
-                  src="https://i.postimg.cc/wBfGkhyw/Whats-App-Image-2026-02-15-at-22-14-05.jpg"
-                  alt="RAJAT YADAV"
-                  className="footer-logo-img"
-                />
+<img
+  src="/portfolio.png"
+  alt="RAJAT YADAV"
+  className="footer-logo-img"
+/>
                 <span className="footer-logo-name">RAJAT YADAV</span>
               </a>
               <p className="footer-tagline">

@@ -12,6 +12,7 @@ export function HeroSection() {
   const [text, setText] = useState('');
   const [index, setIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     const currentText = typingTexts[index];
@@ -21,7 +22,7 @@ export function HeroSection() {
       if (!isDeleting) {
         setText(currentText.substring(0, text.length + 1));
         if (text.length === currentText.length) {
-          setTimeout(() => setIsDeleting(true), 2000);
+          setTimeout(() => setIsDeleting(true), 1500); // Reduced from 2000ms
         }
       } else {
         setText(text.substring(0, text.length - 1));
@@ -35,15 +36,22 @@ export function HeroSection() {
     return () => clearTimeout(timer);
   }, [text, isDeleting, index]);
 
+  // Improved image loading with error fallback
+  const handleImageLoad = () => setImageLoaded(true);
+  const handleImageError = () => {
+    console.warn('Hero image failed to load');
+    // Could implement fallback image here
+  };
+
   return (
-    <section className="hero" id="home">
+    <section className="hero" id="home" aria-labelledby="hero-title">
       <div className="hero-inner">
         <div className="hero-content">
           <span className="hero-badge">{heroContent.greeting}</span>
-          <h1 className="hero-title">{heroContent.name}</h1>
+          <h1 className="hero-title" id="hero-title">{heroContent.name}</h1>
           <p className="hero-description">{heroContent.summary}</p>
 
-          <div className="hero-actions">
+          <div className="hero-actions" aria-label="Hero section actions">
             <button
               className="btn hero-btn hero-btn-primary"
               onClick={() =>
@@ -72,6 +80,7 @@ export function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn hero-btn hero-btn-secondary"
+              aria-label="Download resume"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18" aria-hidden="true">
                 <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
@@ -88,9 +97,13 @@ export function HeroSection() {
           <div className="hero-image-wrapper">
             <div className="hero-image-glow"></div>
             <img
-              src="https://i.postimg.cc/wBfGkhyw/Whats-App-Image-2026-02-15-at-22-14-05.jpg"
+              src="/portfolio.png"
               alt="RAJAT YADAV"
-              className="hero-image"
+              className={`hero-image${imageLoaded ? ' loaded' : ''}`}
+              onLoad={handleImageLoad}
+              onError={handleImageError}
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -98,7 +111,7 @@ export function HeroSection() {
 
       <div className="hero-tech-strip">
         <div className="container">
-          <div className="tech-strip-scroll">
+          <div className="tech-strip-scroll" role="marquee" aria-roledescription="scrolling">
             {['React', 'JavaScript', 'HTML', 'CSS', 'Node.js', 'Git', 'Vite', 'VS Code'].map((tech) => (
               <span key={tech} className="tech-strip-item">{tech}</span>
             ))}
