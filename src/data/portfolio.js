@@ -72,6 +72,24 @@ const portfolioData = {
   // ─── Projects Section ────────────────────────
   projects: [
     {
+      id: 8,
+      title: 'Mall of America Interactive Sales Deck',
+      category: 'Full Stack',
+      description:
+        'Premium interactive sales deck built with Next.js, TypeScript, GSAP, Framer Motion and Tailwind CSS. Designed for retail leasing, sponsorship opportunities and event bookings.',
+      techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'GSAP', 'Framer Motion', 'Vercel'],
+      features: [
+        'Cinematic GSAP scroll-triggered animations for immersive storytelling',
+        'Interactive property and sponsorship opportunity browser',
+        'Responsive layout optimized for retail leasing presentations',
+        'Seamless page transitions powered by Framer Motion',
+        'Type-safe architecture with Next.js App Router and TypeScript',
+        'Vercel-optimized deployment with edge-ready performance',
+      ],
+      demoLink: 'https://frontend-wine-chi-26.vercel.app',
+      githubLink: 'https://github.com/rajatydv001/mall-of-america-sales-deck',
+    },
+    {
       id: 1,
       title: 'AI Spend Audit',
       category: 'Full Stack',
