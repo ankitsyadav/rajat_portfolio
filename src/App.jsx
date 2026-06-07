@@ -2,6 +2,7 @@ import './styles/main.css';
 import { Navigation } from './components/Navigation';
 import { HeroSection } from './sections/HeroSection';
 import { AboutSection } from './sections/AboutSection';
+import { ServicesSection } from './sections/ServicesSection';
 import { SkillsSection } from './sections/SkillsSection';
 import { ProjectsSection } from './sections/ProjectsSection';
 import { ExperienceSection } from './sections/ExperienceSection';
@@ -22,6 +23,9 @@ function App() {
           <AboutSection />
         </ScrollReveal>
         <ScrollReveal delay={100}>
+          <ServicesSection />
+        </ScrollReveal>
+        <ScrollReveal delay={200}>
           <SkillsSection />
         </ScrollReveal>
         <ScrollReveal delay={200}>

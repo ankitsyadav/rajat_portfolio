@@ -5,7 +5,7 @@ export function Navigation() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
-  const navItems = useMemo(() => ['about', 'skills', 'projects', 'experience', 'credentials', 'contact'], []);
+  const navItems = useMemo(() => ['about', 'services', 'skills', 'projects', 'experience', 'credentials', 'contact'], []);
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 20);

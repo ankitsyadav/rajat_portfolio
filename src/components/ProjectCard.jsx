@@ -2,15 +2,31 @@ import { useState } from 'react';
 import { ProjectModal } from './ProjectModal';
 
 export function ProjectCard({ project }) {
-  const { title, category, description, techStack, demoLink, githubLink } = project;
+  const { title, category, description, techStack, demoLink, githubLink, image } = project;
   const [modalOpen, setModalOpen] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   return (
     <>
       <div className="project-card">
-        <div className="project-card__glow"></div>
 
-        <div className="project-card__header">
+        <div className="project-card__image">
+          {image && !imgError ? (
+            <img
+              src={image}
+              alt={title}
+              loading="lazy"
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            <div className="project-card__image-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="32" height="32">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+            </div>
+          )}
           <span className="project-card__category">{category}</span>
         </div>
 
@@ -28,7 +44,11 @@ export function ProjectCard({ project }) {
             className="project-card__details-btn"
             onClick={() => setModalOpen(true)}
           >
-            See Details
+            View Details
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
           </button>
           <div className="project-card__links">
             <a

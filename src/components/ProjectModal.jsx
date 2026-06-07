@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 export function ProjectModal({ project, onClose }) {
-  const { title, category, description, techStack, features, demoLink, githubLink } = project;
+  const { title, category, overview, problem, solution, techStack, features, demoLink, githubLink } = project;
 
   useEffect(() => {
     const handleKey = (e) => {
@@ -31,23 +31,35 @@ export function ProjectModal({ project, onClose }) {
         </div>
 
         <div className="modal__body">
-          <p className="modal__description">{description}</p>
 
-          {features && features.length > 0 && (
-            <div className="modal__features">
-              <h3 className="modal__section-title">Key Features</h3>
-              <ul>
-                {features.map((feature, i) => (
-                  <li key={i}>
-                    <span className="feature-dot"></span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <div className="modal__section">
+            <h3 className="modal__section-title">Overview</h3>
+            <p className="modal__text">{overview}</p>
+          </div>
 
-          <div className="modal__tech">
+          <div className="modal__section">
+            <h3 className="modal__section-title">Problem</h3>
+            <p className="modal__text">{problem}</p>
+          </div>
+
+          <div className="modal__section">
+            <h3 className="modal__section-title">Solution</h3>
+            <p className="modal__text">{solution}</p>
+          </div>
+
+          <div className="modal__section">
+            <h3 className="modal__section-title">Key Features</h3>
+            <ul className="modal__feature-list">
+              {features.map((feature, i) => (
+                <li key={i}>
+                  <span className="feature-dot"></span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="modal__section">
             <h3 className="modal__section-title">Tech Stack</h3>
             <div className="modal__tech-tags">
               {techStack.map((tech, i) => (
@@ -55,6 +67,7 @@ export function ProjectModal({ project, onClose }) {
               ))}
             </div>
           </div>
+
         </div>
 
         <div className="modal__actions">
