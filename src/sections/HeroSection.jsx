@@ -1,128 +1,164 @@
-import { useState, useEffect } from 'react';
-import { heroContent } from '../data/portfolio';
+import { useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { heroContent, featuredProject, stats } from '../data/portfolio';
 
-const typingTexts = [
-  'React Developer',
-  'JavaScript Enthusiast',
-  'Frontend Builder',
-  'UI Creator'
-];
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+  },
+};
 
 export function HeroSection() {
-  const [text, setText] = useState('');
-  const [index, setIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 150, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 150, damping: 20 });
+  const cardX = useTransform(springX, [-0.5, 0.5], [8, -8]);
+  const cardY = useTransform(springY, [-0.5, 0.5], [8, -8]);
 
-  useEffect(() => {
-    const currentText = typingTexts[index];
-    const timeout = isDeleting ? 50 : 100;
-
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        setText(currentText.substring(0, text.length + 1));
-        if (text.length === currentText.length) {
-          setTimeout(() => setIsDeleting(true), 1500); // Reduced from 2000ms
-        }
-      } else {
-        setText(text.substring(0, text.length - 1));
-        if (text.length === 0) {
-          setIsDeleting(false);
-          setIndex((prev) => (prev + 1) % typingTexts.length);
-        }
-      }
-    }, timeout);
-
-    return () => clearTimeout(timer);
-  }, [text, isDeleting, index]);
-
-  // Improved image loading with error fallback
-  const handleImageLoad = () => setImageLoaded(true);
-  const handleImageError = () => {
-    console.warn('Hero image failed to load');
-    // Could implement fallback image here
+  const handleMouse = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
+    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
   };
 
+  const resetMouse = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
+  const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+
   return (
-    <section className="hero" id="home" aria-labelledby="hero-title">
-      <div className="hero-inner">
-        <div className="hero-content">
-          <span className="hero-badge">{heroContent.greeting}</span>
-          <span className="hero-freelance-badge">Available for Freelance Projects</span>
-          <h1 className="hero-title" id="hero-title">{heroContent.name}</h1>
-          <p className="hero-description">{heroContent.summary}</p>
+    <section
+      className="hero"
+      id="home"
+      onMouseMove={handleMouse}
+      onMouseLeave={resetMouse}
+    >
+      <div className="container">
+        <div className="hero-layout">
+          <motion.div
+            className="hero-content"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div variants={itemVariants} className="hero-badge">
+              <span className="hero-badge-dot" />
+              Open to Opportunities
+            </motion.div>
 
-          <div className="hero-actions" aria-label="Hero section actions">
-            <button
-              className="btn hero-btn hero-btn-primary"
-              onClick={() =>
-                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
-              }
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20" aria-hidden="true">
-                <path d="M2 12h20M2 12l5-5m-5 5 5 5M22 12l-5-5m5 5-5 5" />
-              </svg>
-              See My Projects
-            </button>
-            <a
-              href="/Rajat_resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn hero-btn hero-btn-secondary"
-              aria-label="Download resume"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18" aria-hidden="true">
-                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-              </svg>
-              Download Resume
-            </a>
-            <a
-              href="#contact"
-              className="btn hero-btn hero-btn-accent"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20" aria-hidden="true">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-              Hire Me
-            </a>
-          </div>
+            <motion.h1 variants={itemVariants} className="hero-title">
+              {heroContent.name}
+            </motion.h1>
+
+            <motion.p variants={itemVariants} className="hero-subtitle">
+              {heroContent.title}
+            </motion.p>
+
+            <motion.p variants={itemVariants} className="hero-description">
+              {heroContent.subtitle}
+            </motion.p>
+
+            <motion.p variants={itemVariants} className="hero-seeking">
+              {heroContent.seeking}
+            </motion.p>
+
+            <motion.div variants={itemVariants} className="hero-tech">
+              {heroContent.techStack.map((t, i) => (
+                <span key={t} className="hero-tech-item">
+                  {t}{i < heroContent.techStack.length - 1 && <span className="hero-tech-sep">•</span>}
+                </span>
+              ))}
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="hero-actions">
+              <button className="btn btn--primary" onClick={() => scrollTo('projects')}>
+                View Projects
+              </button>
+              <a href="/Rajat_resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn--secondary">
+                Download Resume
+              </a>
+              <button className="btn btn--ghost" onClick={() => scrollTo('contact')}>
+                Contact Me
+              </button>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="hero-preview"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            style={{ translateX: cardX, translateY: cardY }}
+          >
+            <div className="hero-preview__card">
+              <div className="hero-preview__image">
+                <motion.img
+                  src={featuredProject.image}
+                  alt={featuredProject.title}
+                  loading="eager"
+                  onError={(e) => { e.target.style.display = 'none'; }}
+                  animate={{ scale: [1, 1.03, 1] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                <div className="hero-preview__image-shimmer" />
+              </div>
+              <div className="hero-preview__body">
+                <h3 className="hero-preview__title">{featuredProject.title}</h3>
+                <div className="hero-preview__tech">
+                  {featuredProject.techStack.map((t) => (
+                    <span key={t} className="hero-preview__tech-tag">{t}</span>
+                  ))}
+                </div>
+                <div className="hero-preview__impact">
+                  {featuredProject.impact.map((item) => (
+                    <div key={item.label} className="hero-preview__impact-stat">
+                      <span className="hero-preview__impact-value">{item.value}</span>
+                      <span className="hero-preview__impact-label">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="hero-preview__actions">
+                  <a
+                    href={featuredProject.demoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn--primary btn--sm"
+                  >
+                    Live Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
-        <div className="hero-visual">
-          <div className="hero-image-wrapper">
-            <div className="hero-image-glow"></div>
-            <img
-              src="/portfolio.png"
-              alt="RAJAT YADAV"
-              className={`hero-image${imageLoaded ? ' loaded' : ''}`}
-              onLoad={handleImageLoad}
-              onError={handleImageError}
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="hero-tech-strip">
-        <div className="container">
-          <div className="tech-strip-scroll" role="marquee" aria-roledescription="scrolling">
-            {['React', 'JavaScript', 'HTML', 'CSS', 'Node.js', 'Git', 'Vite', 'VS Code'].map((tech) => (
-              <span key={tech} className="tech-strip-item">{tech}</span>
-            ))}
-            {['React', 'JavaScript', 'HTML', 'CSS', 'Node.js', 'Git', 'Vite', 'VS Code'].map((tech) => (
-              <span key={`dup-${tech}`} className="tech-strip-item">{tech}</span>
-            ))}
-          </div>
-        </div>
+        <motion.div
+          className="hero-stats"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {stats.map((stat) => (
+            <div key={stat.label} className="hero-stat">
+              <span className="hero-stat-value">{stat.value}</span>
+              <span className="hero-stat-label">{stat.label}</span>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

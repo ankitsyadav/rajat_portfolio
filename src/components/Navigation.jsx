@@ -1,133 +1,139 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+
+const sections = ['home', 'projects', 'experience', 'stack', 'contact'];
 
 export function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-
-  const navItems = useMemo(() => ['about', 'services', 'skills', 'projects', 'experience', 'credentials', 'contact'], []);
-
-  const handleScroll = useCallback(() => {
-    setIsScrolled(window.scrollY > 20);
-    const sections = navItems.map((id) => document.getElementById(id));
-    const scrollPos = window.scrollY + 100;
-    for (let i = sections.length - 1; i >= 0; i--) {
-      if (sections[i] && sections[i].offsetTop <= scrollPos) {
-        setActiveSection(navItems[i]);
-        break;
-      }
-    }
-  }, [navItems]);
+  const [active, setActive] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    
-    // Initialize active section on mount using a timeout to avoid synchronous setState
-    const timer = setTimeout(() => {
-      handleScroll();
-    }, 0);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(timer);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+      const scrollPos = window.scrollY + 120;
+      let current = 'home';
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollPos) {
+          current = id;
+        }
+      }
+      setActive(current);
     };
-  }, [handleScroll]);
-
-  const scrollToSection = useCallback((sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMobileOpen(false);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  const scrollTo = useCallback((id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setMobileOpen(false);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    if (mobileOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+    } else {
+      const scrollY = parseInt(document.body.style.top || '0', 10) * -1;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      if (scrollY > 0) window.scrollTo(0, scrollY);
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 769px)');
+    const handler = (e) => { if (e.matches) setMobileOpen(false); };
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const menu = document.querySelector('.mobile-menu');
+    if (!menu) return;
+    const focusableEls = menu.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    const firstFocusable = focusableEls[0];
+    const lastFocusable = focusableEls[focusableEls.length - 1];
+    function handleTab(e) {
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocusable) { e.preventDefault(); lastFocusable.focus(); }
+        } else {
+          if (document.activeElement === lastFocusable) { e.preventDefault(); firstFocusable.focus(); }
+        }
+      }
+      if (e.key === 'Escape') setMobileOpen(false);
+    }
+    document.addEventListener('keydown', handleTab);
+    firstFocusable?.focus();
+    return () => document.removeEventListener('keydown', handleTab);
+  }, [mobileOpen]);
+
+  const labels = { home: 'Home', projects: 'Projects', experience: 'Experience', stack: 'Stack', contact: 'Contact' };
 
   return (
     <>
-      <nav className={`navigation ${isScrolled ? 'navigation--scrolled' : ''}`} aria-label="Main navigation">
+      <nav className={`navigation${scrolled ? ' navigation--scrolled' : ''}`} role="navigation">
         <div className="nav-container">
-          <button
-            className="nav-logo"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            aria-label="RAJAT YADAV - Back to top"
-          >
-            <img
-              src="/portfolio.png"
-              alt="RAJAT YADAV"
-              className="nav-logo-img"
-              loading="lazy"
-            />
-            <span className="logo-text">RAJAT</span>
-          </button>
-
-          <ul className="nav-links">
-            {navItems.map((item) => (
-              <li key={item} className={activeSection === item ? 'active' : ''}>
-                <button onClick={() => scrollToSection(item)}>
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
-                </button>
-              </li>
-            ))}
-          </ul>
-
-          <div className="nav-actions">
-            <a
-              href="/Rajat_resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-cta"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" aria-hidden="true">
-                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-              </svg>
-              Resume
-            </a>
-            <button
-              className={`nav-hamburger ${isMobileOpen ? 'nav-hamburger--open' : ''}`}
-              onClick={() => setIsMobileOpen(!isMobileOpen)}
-              aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={isMobileOpen}
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
+          <div className="nav-logo">
+            <span>Rajat Yadav</span>
           </div>
+
+          <div className="nav-links" role="tablist">
+            {sections.map((id) => (
+              <button
+                key={id}
+                className={`nav-link${active === id ? ' nav-link--active' : ''}`}
+                onClick={() => scrollTo(id)}
+                role="tab"
+                aria-selected={active === id}
+              >
+                {labels[id]}
+              </button>
+            ))}
+          </div>
+
+          <button
+            className={`nav-hamburger${mobileOpen ? ' nav-hamburger--open' : ''}`}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
+          >
+            <span /><span /><span />
+          </button>
         </div>
       </nav>
 
-      <div
-        className={`mobile-menu-overlay ${isMobileOpen ? 'open' : ''}`}
-        onClick={() => setIsMobileOpen(false)}
-        aria-hidden={!isMobileOpen}
-      ></div>
-      <div className={`mobile-menu ${isMobileOpen ? 'open' : ''}`} role="dialog" aria-modal="true">
-        <ul className="mobile-menu-links">
-          {navItems.map((item) => (
-            <li key={item} className={activeSection === item ? 'active' : ''}>
-              <button onClick={() => scrollToSection(item)}>
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </button>
-            </li>
-          ))}
-        </ul>
-        <a
-          href="/Rajat_resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mobile-menu-cta"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18" aria-hidden="true">
-            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-            <line x1="16" y1="13" x2="8" y2="13" />
-            <line x1="16" y1="17" x2="8" y2="17" />
-          </svg>
-          Resume
-        </a>
-      </div>
+      {mobileOpen && (
+        <>
+          <div className="mobile-menu-overlay" onClick={() => setMobileOpen(false)} />
+          <div className={`mobile-menu${mobileOpen ? ' open' : ''}`} id="mobile-menu">
+            <ul className="mobile-menu-links">
+              {sections.map((id) => (
+                <li key={id} className={active === id ? 'active' : ''}>
+                  <button onClick={() => scrollTo(id)}>{labels[id]}</button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
+      )}
     </>
   );
 }
