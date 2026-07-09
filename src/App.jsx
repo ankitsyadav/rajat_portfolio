@@ -38,7 +38,8 @@ function App() {
       </main>
       <footer className="footer">
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} RAJAT YADAV. Built with React &amp; Vite.</p>
+          <p className="footer__name">Designed &amp; Developed by Rajat Yadav</p>
+          <p className="footer__tagline">Frontend Engineer &middot; React &middot; Next.js</p>
         </div>
       </footer>
     </>

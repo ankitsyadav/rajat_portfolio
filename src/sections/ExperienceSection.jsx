@@ -53,14 +53,16 @@ export function ExperienceSection() {
                 </div>
               </div>
 
-              <div className="exp-card__metrics">
-                {item.metrics.map((m) => (
-                  <div key={m.label} className="exp-card__metric">
-                    <span className="exp-card__metric-value">{m.value}</span>
-                    <span className="exp-card__metric-label">{m.label}</span>
-                  </div>
-                ))}
-              </div>
+              {item.metrics && item.metrics.length > 0 && (
+                <div className="exp-card__metrics">
+                  {item.metrics.map((m) => (
+                    <div key={m.label} className="exp-card__metric">
+                      <span className="exp-card__metric-value">{m.value}</span>
+                      <span className="exp-card__metric-label">{m.label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               <ul className="exp-card__highlights">
                 {item.highlights.map((h, i) => (

@@ -72,8 +72,8 @@ export function HeroSection() {
               {heroContent.subtitle}
             </motion.p>
 
-            <motion.p variants={itemVariants} className="hero-seeking">
-              {heroContent.seeking}
+            <motion.p variants={itemVariants} className="hero-roles">
+              Open to Frontend Engineer &middot; React Developer &middot; Software Engineer Roles
             </motion.p>
 
             <motion.div variants={itemVariants} className="hero-tech">
