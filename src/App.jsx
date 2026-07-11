@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import './styles/main.css';
 import { SubtleBackground } from './components/SubtleBackground';
 import { Navigation } from './components/Navigation';
+import { CommandPalette } from './components/CommandPalette';
 import { HeroSection } from './sections/HeroSection';
+import { LiveSpendCalculator } from './sections/LiveSpendCalculator';
 import { ProjectsSection } from './sections/ProjectsSection';
 import { ExperienceSection } from './sections/ExperienceSection';
 import { StackSection } from './sections/StackSection';
+import { GithubStatsWidget } from './sections/GithubStatsWidget';
 import { ContactSection } from './sections/ContactSection';
 
 function ScrollProgress() {
@@ -23,17 +26,33 @@ function ScrollProgress() {
 }
 
 function App() {
+  const [showPalette, setShowPalette] = useState(false);
+
+  useEffect(() => {
+    function handleKey(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setShowPalette(p => !p);
+      }
+    }
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, []);
+
   return (
     <>
       <SubtleBackground />
       <ScrollProgress />
       <a href="#main-content" className="skip-link">Skip to main content</a>
-      <Navigation />
+      <Navigation onOpenPalette={() => setShowPalette(true)} />
+      <CommandPalette isOpen={showPalette} onClose={() => setShowPalette(false)} />
       <main id="main-content">
         <HeroSection />
+        <LiveSpendCalculator />
         <ProjectsSection />
         <ExperienceSection />
         <StackSection />
+        <GithubStatsWidget />
         <ContactSection />
       </main>
       <footer className="footer">

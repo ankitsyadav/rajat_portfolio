@@ -1,6 +1,4 @@
 export const personalInfo = {
-  name: 'RAJAT YADAV',
-  title: 'Software Engineer',
   email: 'rajaty2930@gmail.com',
   location: 'Noida, India',
   linkedin: 'https://www.linkedin.com/in/rajatydv2930',

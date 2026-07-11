@@ -7,6 +7,7 @@ function FeaturedProjectCard({ project }) {
   return (
     <motion.div
       className="featured-card"
+      data-project-id={project.id}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
@@ -99,6 +100,7 @@ function ProjectCard({ project, index }) {
   return (
     <motion.div
       className={`project-card${isChurn ? ' project-card--churn' : ''}`}
+      data-project-id={project.id}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
