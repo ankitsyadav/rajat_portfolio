@@ -73,7 +73,7 @@ export function HeroSection() {
             </motion.p>
 
             <motion.p variants={itemVariants} className="hero-roles">
-              Open to Frontend Engineer &middot; React Developer &middot; Software Engineer Roles
+              Open to Full Stack Developer &middot; React Developer &middot; Software Engineer Roles
             </motion.p>
 
             <motion.div variants={itemVariants} className="hero-tech">
@@ -88,7 +88,7 @@ export function HeroSection() {
               <button className="btn btn--primary" onClick={() => scrollTo('projects')}>
                 View Projects
               </button>
-              <a href="/Rajat_resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn--secondary">
+              <a href="/Rajat_resume.pdf" download="Rajat_Yadav_Full_Stack_Developer_Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn--secondary">
                 Download Resume
               </a>
               <button className="btn btn--ghost" onClick={() => scrollTo('contact')}>

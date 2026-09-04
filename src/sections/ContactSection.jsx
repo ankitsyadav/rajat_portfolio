@@ -3,7 +3,7 @@ import { SectionHeader } from '../components/SectionHeader';
 import { personalInfo } from '../data/portfolio';
 
 const roles = [
-  'Frontend Developer',
+  'Full Stack Developer',
   'React Developer',
   'Next.js Developer',
   'Software Engineer',
@@ -28,8 +28,8 @@ export function ContactSection() {
         >
           <div className="contact-info">
             <p className="contact-description">
-              I&apos;m a Frontend Engineer focused on building
-              high-performance React &amp; Next.js applications.
+              I&apos;m a Full Stack Developer focused on building
+              high-performance full-stack applications with React, Next.js &amp; Node.js.
             </p>
 
             <div className="contact-roles">
@@ -52,6 +52,12 @@ export function ContactSection() {
                 <span className="contact-detail-value">{personalInfo.location}</span>
               </div>
               <div className="contact-detail">
+                <span className="contact-detail-label">Phone:</span>
+                <a href={`tel:${personalInfo.phone.replace(/\s/g, '')}`} className="contact-detail-value contact-detail-link">
+                  {personalInfo.phone}
+                </a>
+              </div>
+              <div className="contact-detail">
                 <span className="contact-detail-label">Email:</span>
                 <a href={`mailto:${personalInfo.email}`} className="contact-detail-value contact-detail-link">
                   {personalInfo.email}
@@ -67,7 +73,7 @@ export function ContactSection() {
             <div className="contact-card-content">
               <span className="contact-card-badge">OPEN TO OPPORTUNITIES</span>
               <div className="contact-card-actions">
-                <a href="/Rajat_resume.pdf" download="Rajat_Yadav_Frontend_Engineer_Resume.pdf" className="btn btn--primary" style={{ flex: 1 }}>
+                <a href="/Rajat_resume.pdf" download="Rajat_Yadav_Full_Stack_Developer_Resume.pdf" className="btn btn--primary" style={{ flex: 1 }}>
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M7 1v9M3 6l4 4 4-4M1 11v2h12v-2" />
                   </svg>

@@ -21,16 +21,16 @@ function FeaturedProjectCard({ project }) {
               <span className="browser-frame__dot browser-frame__dot--yellow" />
               <span className="browser-frame__dot browser-frame__dot--green" />
             </div>
-            <span className="browser-frame__url">mallofamerica.com</span>
+            <span className="browser-frame__url">{project.browserUrl}</span>
           </div>
           <div className="browser-frame__screen">
             <img src={project.image} alt={project.title} loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
             <div className="browser-frame__overlay">
               <div className="browser-frame__badge browser-frame__badge--left">
-                {project.title} Interactive Sales Deck
+                {project.title} — Full-Stack SaaS
               </div>
               <div className="browser-frame__stats">
-                {featuredProject.impact.map((item) => (
+                {project.impact.map((item) => (
                   <div key={item.label} className="browser-frame__stat">
                     <span className="browser-frame__stat-value">{item.value}</span>
                     <span className="browser-frame__stat-label">{item.label}</span>
@@ -47,11 +47,11 @@ function FeaturedProjectCard({ project }) {
         <h3 className="featured-card__title">{project.title}</h3>
 
         <p className="featured-card__desc">
-          Scroll-driven storytelling experience with cinematic animations and interactive property browser for North America&apos;s largest mall.
+          {project.tagline}
         </p>
 
         <div className="featured-card__impact">
-          {featuredProject.impact.map((item) => (
+          {project.impact.map((item) => (
             <div key={item.label} className="featured-card__impact-stat">
               <span className="featured-card__impact-value">{item.value}</span>
               <span className="featured-card__impact-label">{item.label}</span>
@@ -168,7 +168,6 @@ function ProjectCard({ project, index }) {
 
 export function ProjectsSection() {
   const [showAll, setShowAll] = useState(false);
-  const featured = projects[0];
   const rest = projects.slice(1);
   const main = rest.slice(0, 2);
   const hidden = rest.slice(2);
@@ -183,7 +182,7 @@ export function ProjectsSection() {
         />
 
         <div className="projects-featured">
-          <FeaturedProjectCard project={featured} />
+          <FeaturedProjectCard project={featuredProject} />
         </div>
 
         <div className="projects-grid">

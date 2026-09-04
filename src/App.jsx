@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import './styles/main.css';
 import { SubtleBackground } from './components/SubtleBackground';
 import { Navigation } from './components/Navigation';
-import { CommandPalette } from './components/CommandPalette';
 import { HeroSection } from './sections/HeroSection';
 import { LiveSpendCalculator } from './sections/LiveSpendCalculator';
 import { ProjectsSection } from './sections/ProjectsSection';
@@ -26,26 +25,12 @@ function ScrollProgress() {
 }
 
 function App() {
-  const [showPalette, setShowPalette] = useState(false);
-
-  useEffect(() => {
-    function handleKey(e) {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        setShowPalette(p => !p);
-      }
-    }
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, []);
-
   return (
     <>
       <SubtleBackground />
       <ScrollProgress />
       <a href="#main-content" className="skip-link">Skip to main content</a>
-      <Navigation onOpenPalette={() => setShowPalette(true)} />
-      <CommandPalette isOpen={showPalette} onClose={() => setShowPalette(false)} />
+      <Navigation />
       <main id="main-content">
         <HeroSection />
         <LiveSpendCalculator />
@@ -58,7 +43,7 @@ function App() {
       <footer className="footer">
         <div className="container">
           <p className="footer__name">Designed &amp; Developed by Rajat Yadav</p>
-          <p className="footer__tagline">Frontend Engineer &middot; React &middot; Next.js</p>
+          <p className="footer__tagline">Full Stack Developer &middot; React &middot; Next.js</p>
         </div>
       </footer>
     </>

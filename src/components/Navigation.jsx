@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 
 const sections = ['home', 'projects', 'experience', 'stack', 'contact'];
 
-export function Navigation({ onOpenPalette }) {
+export function Navigation() {
   const [active, setActive] = useState('home');
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -94,21 +94,17 @@ export function Navigation({ onOpenPalette }) {
             <span>Rajat Yadav</span>
           </div>
 
-          <div className="nav-links" role="tablist">
+          <div className="nav-links">
             {sections.map((id) => (
               <button
                 key={id}
                 className={`nav-link${active === id ? ' nav-link--active' : ''}`}
                 onClick={() => scrollTo(id)}
-                role="tab"
-                aria-selected={active === id}
+                aria-current={active === id ? 'true' : undefined}
               >
                 {labels[id]}
               </button>
             ))}
-            <button className="nav-cmdk-btn" onClick={onOpenPalette} aria-label="Open command palette">
-              <kbd>&#8984;K</kbd>
-            </button>
           </div>
 
           <button
@@ -138,12 +134,6 @@ export function Navigation({ onOpenPalette }) {
         </>
       )}
 
-      <button className="nav-cmdk-fab" onClick={onOpenPalette} aria-label="Open command palette">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="20" height="20">
-          <circle cx="11" cy="11" r="8" />
-          <path d="M21 21l-4.35-4.35" />
-        </svg>
-      </button>
     </>
   );
 }
