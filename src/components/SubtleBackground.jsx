@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const STAR_COUNT = 90;
+const STAR_COUNT = 60;
 
 export function SubtleBackground() {
   const canvasRef = useRef(null);
@@ -45,9 +45,9 @@ export function SubtleBackground() {
 
       // Hero glow — large radial at top-center
       const hg = ctx.createRadialGradient(pw * 0.5, ph * 0.15, 0, pw * 0.5, ph * 0.15, ph * 0.6);
-      hg.addColorStop(0, 'rgba(139, 92, 246, 0.04)');
-      hg.addColorStop(0.3, 'rgba(139, 92, 246, 0.02)');
-      hg.addColorStop(0.6, 'rgba(99, 102, 241, 0.01)');
+      hg.addColorStop(0, 'rgba(139, 92, 246, 0.025)');
+      hg.addColorStop(0.3, 'rgba(139, 92, 246, 0.012)');
+      hg.addColorStop(0.6, 'rgba(99, 102, 241, 0.006)');
       hg.addColorStop(1, 'rgba(99, 102, 241, 0)');
       ctx.fillStyle = hg;
       ctx.fillRect(0, 0, pw, ph);
@@ -56,8 +56,8 @@ export function SubtleBackground() {
       const n1x = pw * 0.7 + Math.sin(t * 0.15) * pw * 0.06;
       const n1y = ph * 0.3 + Math.cos(t * 0.12) * ph * 0.05;
       const g1 = ctx.createRadialGradient(n1x, n1y, 0, n1x, n1y, 250);
-      g1.addColorStop(0, 'rgba(139, 92, 246, 0.02)');
-      g1.addColorStop(0.5, 'rgba(139, 92, 246, 0.012)');
+      g1.addColorStop(0, 'rgba(139, 92, 246, 0.012)');
+      g1.addColorStop(0.5, 'rgba(139, 92, 246, 0.006)');
       g1.addColorStop(1, 'rgba(139, 92, 246, 0)');
       ctx.fillStyle = g1;
       ctx.fillRect(0, 0, pw, ph);
@@ -65,8 +65,8 @@ export function SubtleBackground() {
       const n2x = pw * 0.25 + Math.cos(t * 0.14) * pw * 0.05;
       const n2y = ph * 0.7 + Math.sin(t * 0.1) * ph * 0.04;
       const g2 = ctx.createRadialGradient(n2x, n2y, 0, n2x, n2y, 200);
-      g2.addColorStop(0, 'rgba(139, 92, 246, 0.015)');
-      g2.addColorStop(0.6, 'rgba(139, 92, 246, 0.008)');
+      g2.addColorStop(0, 'rgba(139, 92, 246, 0.008)');
+      g2.addColorStop(0.6, 'rgba(139, 92, 246, 0.004)');
       g2.addColorStop(1, 'rgba(139, 92, 246, 0)');
       ctx.fillStyle = g2;
       ctx.fillRect(0, 0, pw, ph);
@@ -75,8 +75,8 @@ export function SubtleBackground() {
       const f1x = pw * 0.5 + Math.sin(t * 0.08) * pw * 0.08;
       const f1y = ph * 0.5 + Math.cos(t * 0.06) * ph * 0.06;
       const gf = ctx.createRadialGradient(f1x, f1y, 0, f1x, f1y, 300);
-      gf.addColorStop(0, 'rgba(99, 102, 241, 0.012)');
-      gf.addColorStop(0.5, 'rgba(99, 102, 241, 0.006)');
+      gf.addColorStop(0, 'rgba(99, 102, 241, 0.006)');
+      gf.addColorStop(0.5, 'rgba(99, 102, 241, 0.003)');
       gf.addColorStop(1, 'rgba(99, 102, 241, 0)');
       ctx.fillStyle = gf;
       ctx.fillRect(0, 0, pw, ph);
@@ -93,7 +93,7 @@ export function SubtleBackground() {
 
         ctx.beginPath();
         ctx.arc(sx, sy, star.size * (0.5 + twinkle * 0.5), 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${twinkle * 0.35})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${twinkle * 0.25})`;
         ctx.fill();
       }
 
@@ -110,7 +110,7 @@ export function SubtleBackground() {
   }, []);
 
   return (
-    <canvas ref={canvasRef} style={{
+    <canvas ref={canvasRef} aria-hidden="true" style={{
       position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none',
     }} />
   );

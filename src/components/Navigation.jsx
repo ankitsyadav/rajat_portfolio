@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 
-const sections = ['home', 'projects', 'experience', 'stack', 'contact'];
+const sections = ['home', 'projects', 'experience', 'certifications', 'stack', 'contact'];
 
 export function Navigation() {
   const [active, setActive] = useState('home');
@@ -84,11 +84,11 @@ export function Navigation() {
     return () => document.removeEventListener('keydown', handleTab);
   }, [mobileOpen]);
 
-  const labels = { home: 'Home', projects: 'Projects', experience: 'Experience', stack: 'Stack', contact: 'Contact' };
+  const labels = { home: 'Home', projects: 'Projects', experience: 'Experience', certifications: 'Certs', stack: 'Stack', contact: 'Contact' };
 
   return (
     <>
-      <nav className={`navigation${scrolled ? ' navigation--scrolled' : ''}`} role="navigation">
+      <nav className={`navigation${scrolled ? ' navigation--scrolled' : ''}`} aria-label="Main navigation">
         <div className="nav-container">
           <div className="nav-logo">
             <span>Rajat Yadav</span>

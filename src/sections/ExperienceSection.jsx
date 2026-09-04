@@ -88,6 +88,7 @@ export function ExperienceSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
+          <p className="section-label" style={{ marginBottom: '16px' }}>Education</p>
           <div className="edu-grid">
             {education.map((edu) => (
               <div key={edu.id} className="edu-card">

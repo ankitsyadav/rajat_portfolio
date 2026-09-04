@@ -26,7 +26,7 @@ function FeaturedProjectCard({ project }) {
           <div className="browser-frame__screen">
             <img src={project.image} alt={project.title} loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
             <div className="browser-frame__overlay">
-              <div className="browser-frame__badge browser-frame__badge--left">
+              <div className="browser-frame__badge">
                 {project.title} — Full-Stack SaaS
               </div>
               <div className="browser-frame__stats">
@@ -199,7 +199,7 @@ export function ProjectsSection() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              style={{ overflow: 'hidden', marginTop: 20 }}
+              style={{ overflow: 'hidden', marginTop: 16 }}
             >
               {hidden.map((project, i) => (
                 <ProjectCard key={project.id} project={project} index={main.length + i + 1} />
@@ -209,12 +209,13 @@ export function ProjectsSection() {
         </AnimatePresence>
 
         {hidden.length > 0 && (
-          <div style={{ textAlign: 'center', marginTop: 32 }}>
+          <div className="projects-show-all">
             <button
-              className="btn btn--ghost"
+              className="btn btn--outline"
               onClick={() => setShowAll((prev) => !prev)}
+              aria-expanded={showAll}
             >
-              {showAll ? 'Show Less' : 'View All Projects'}
+              {showAll ? 'Show Less' : `View All ${projects.length} Projects`}
             </button>
           </div>
         )}

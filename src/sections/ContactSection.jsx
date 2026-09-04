@@ -28,8 +28,8 @@ export function ContactSection() {
         >
           <div className="contact-info">
             <p className="contact-description">
-              I&apos;m a Full Stack Developer focused on building
-              high-performance full-stack applications with React, Next.js &amp; Node.js.
+              I build production-ready full-stack applications with React, Next.js &amp; Node.js.
+              Currently open to new opportunities.
             </p>
 
             <div className="contact-roles">
@@ -72,6 +72,10 @@ export function ContactSection() {
             <div className="contact-card-glow" />
             <div className="contact-card-content">
               <span className="contact-card-badge">OPEN TO OPPORTUNITIES</span>
+              <p className="contact-card-text">
+                I'm actively looking for Full Stack Developer, React Developer, and Software Engineer roles.
+                Let's discuss how I can contribute to your team.
+              </p>
               <div className="contact-card-actions">
                 <a href="/Rajat_resume.pdf" download="Rajat_Yadav_Full_Stack_Developer_Resume.pdf" className="btn btn--primary" style={{ flex: 1 }}>
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

@@ -10,8 +10,6 @@ const icons = {
   tailwind: <svg viewBox="0 0 24 24" fill="none"><path d="M12 3C9 3 7 5 6 9c2-1 3.5-1 5 0 1.5 1 2.5 2.5 5 4 3 1.5 5 0 6-3-2 1-3.5 1-5 0-1.5-1-2.5-2.5-5-4-3-1.5-5 0-6 3z" fill="#38BDF8"/></svg>,
   html5: <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#E34F26"/><text x="12" y="16" textAnchor="middle" fontSize="10" fontWeight="700" fill="#fff" fontFamily="Inter,sans-serif">H</text></svg>,
   nodejs: <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l0 10 10 5 10-5V7L12 2z" fill="#339933"/><text x="12" y="15" textAnchor="middle" fontSize="8" fontWeight="700" fill="#fff" fontFamily="Inter,sans-serif">N</text></svg>,
-  python: <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="3" fill="#3776AB"/><rect x="6" y="5" width="12" height="5" fill="#FFD43B"/><text x="12" y="16" textAnchor="middle" fontSize="8" fontWeight="700" fill="#fff" fontFamily="Inter,sans-serif">Py</text></svg>,
-  flask: <svg viewBox="0 0 24 24" fill="none"><path d="M8 22l4-12 4 12" stroke="#8888a0" strokeWidth="1.5" strokeLinecap="round"/><path d="M9 18h6" stroke="#8888a0" strokeWidth="1.5"/></svg>,
   api: <svg viewBox="0 0 24 24" fill="none" stroke="#8888a0" strokeWidth="1.5"><path d="M7 8l-4 4 4 4M17 8l4 4-4 4M14 4l-4 16"/></svg>,
   lock: <svg viewBox="0 0 24 24" fill="none" stroke="#8888a0" strokeWidth="1.5"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 118 0v4"/></svg>,
   postgresql: <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="4" fill="#336791"/><text x="12" y="16" textAnchor="middle" fontSize="11" fontWeight="700" fill="#fff" fontFamily="Inter,sans-serif">PG</text></svg>,
@@ -22,7 +20,6 @@ const icons = {
   vercel: <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l10 18H2L12 3z" fill="#fff"/></svg>,
   play: <svg viewBox="0 0 24 24" fill="none" stroke="#8888a0" strokeWidth="1.5"><polygon points="8 5 19 12 8 19 8 5"/></svg>,
   sparkle: <svg viewBox="0 0 24 24" fill="none" stroke="#8888a0" strokeWidth="1.5"><path d="M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2 2-7z"/></svg>,
-  credit: <svg viewBox="0 0 24 24" fill="none" stroke="#8888a0" strokeWidth="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>,
 };
 
 export function StackSection() {
@@ -45,13 +42,16 @@ export function StackSection() {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.4, delay: ci * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h3 className="stack-category__title">{category.title}</h3>
-              <div className="stack-items">
+              <div className="stack-category__header">
+                <h3 className="stack-category__title">{category.title}</h3>
+                <span className="stack-category__count">{category.items.length}</span>
+              </div>
+              <div className="stack-chips">
                 {category.items.map((item) => (
-                  <div key={item.name} className="stack-item">
-                    <span className="stack-item__icon" aria-hidden="true">{icons[item.icon] || item.icon}</span>
-                    <span className="stack-item__name">{item.name}</span>
-                  </div>
+                  <span key={item.name} className="stack-chip">
+                    <span className="stack-chip__icon" aria-hidden="true">{icons[item.icon] || item.icon}</span>
+                    {item.name}
+                  </span>
                 ))}
               </div>
             </motion.div>

@@ -85,14 +85,14 @@ export function HeroSection() {
             </motion.div>
 
             <motion.div variants={itemVariants} className="hero-actions">
-              <button className="btn btn--primary" onClick={() => scrollTo('projects')}>
-                View Projects
-              </button>
-              <a href="/Rajat_resume.pdf" download="Rajat_Yadav_Full_Stack_Developer_Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn--secondary">
+              <a href="/Rajat_resume.pdf" download="Rajat_Yadav_Full_Stack_Developer_Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn--primary">
                 Download Resume
               </a>
-              <button className="btn btn--ghost" onClick={() => scrollTo('contact')}>
+              <button className="btn btn--secondary" onClick={() => scrollTo('contact')}>
                 Contact Me
+              </button>
+              <button className="btn btn--ghost" onClick={() => scrollTo('projects')}>
+                View Projects
               </button>
             </motion.div>
           </motion.div>
@@ -111,8 +111,6 @@ export function HeroSection() {
                   alt={featuredProject.title}
                   loading="eager"
                   onError={(e) => { e.target.style.display = 'none'; }}
-                  animate={{ scale: [1, 1.03, 1] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
                 />
                 <div className="hero-preview__image-shimmer" />
               </div>

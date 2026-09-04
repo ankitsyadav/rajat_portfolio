@@ -13,9 +13,22 @@ export const heroContent = {
   techStack: ['React.js', 'Next.js', 'Node.js', 'TypeScript', 'PostgreSQL'],
 };
 
+export const aboutContent = {
+  paragraphs: [
+    'I build production-ready applications across the complete stack — from responsive React frontends to Node.js REST APIs, PostgreSQL databases, and deployed infrastructure.',
+    'My work spans authentication and RBAC, state management, API integration, performance optimization, and scalable architecture. I focus on shipping features that solve real problems for users and businesses.',
+  ],
+  capabilities: [
+    { label: 'Frontend', items: 'React.js, Next.js, TypeScript, Tailwind CSS' },
+    { label: 'Backend', items: 'Node.js, Express.js, REST APIs, Authentication' },
+    { label: 'Data', items: 'PostgreSQL, Prisma, SQL, Database Design' },
+    { label: 'Engineering', items: 'RBAC, Caching, Performance, CI/CD, Deployment' },
+  ],
+};
+
 export const stats = [
   { value: '5+', label: 'Projects Built' },
-  { value: '1.5+', label: 'Years Exp' },
+  { value: '1y 8m', label: 'Experience' },
 ];
 
 export const featuredProject = {
@@ -43,12 +56,6 @@ export const projects = [
     problem: 'Companies using multiple AI tools had no visibility into total spend, leading to wasted budgets across 8+ providers.',
     solution: 'Built a full-stack SaaS app that audits and optimizes AI tool spending, with role-based access control for team accounts and automated spend-analysis insights.',
     impact: 'Reduced AI spend with analytics, automated recommendations, and exportable PDF reports.',
-    features: [
-      'Multi-provider audit engine tracking spend across AI tools',
-      'NextAuth authentication with role-based access control',
-      'Stripe subscription billing for multi-tier pricing plans',
-      'OpenAI API integration for automated spend-analysis insights',
-    ],
     techStack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma', 'Stripe', 'NextAuth', 'OpenAI API'],
     demoLink: 'https://ai-spend-audit-rouge.vercel.app',
     githubLink: 'https://github.com/rajatydv001/ai-spend-audit',
@@ -62,12 +69,6 @@ export const projects = [
     problem: 'Mall of America needed a compelling digital presentation to attract retail tenants. Static PDF decks failed to immerse prospects.',
     solution: 'Built a cinematic, single-page app for retail and sponsor pitches using a modular, reusable component architecture with scroll-based animations.',
     impact: 'Interactive sales presentation for North America\'s largest mall featuring 5 responsive, mobile-first sections.',
-    features: [
-      'Cinematic scroll-based animations with GSAP and Lenis',
-      'Modular, reusable component architecture',
-      'Seamless Framer Motion transitions',
-      'Type-safe Next.js App Router architecture',
-    ],
     techStack: ['Next.js', 'TypeScript', 'Framer Motion', 'GSAP', 'Lenis'],
     demoLink: 'https://frontend-wine-chi-26.vercel.app',
     githubLink: 'https://github.com/rajatydv001/mall-of-america-sales-deck',
@@ -81,12 +82,6 @@ export const projects = [
     problem: 'A small business needed an online store but lacked budget for Shopify or WooCommerce subscriptions.',
     solution: 'Developed a fully responsive e-commerce storefront with a reusable component library to speed up page development, deployed with SEO best practices.',
     impact: 'Zero-cost e-commerce storefront enabling a small business to sell online without platform fees.',
-    features: [
-      'Reusable component library for rapid page development',
-      'Product catalog and shopping cart functionality',
-      'Responsive mobile-first layout',
-      'Vercel deployment with SEO best practices',
-    ],
     techStack: ['React', 'JavaScript', 'Tailwind CSS', 'REST APIs', 'Vercel'],
     demoLink: 'https://nectar-nest-gray.vercel.app/',
     githubLink: 'https://github.com/rajatydv001/nectar-nest',
@@ -100,12 +95,6 @@ export const projects = [
     problem: 'Businesses manually collected leads, researched companies, and created reports — a slow and error-prone process.',
     solution: 'Flask-based system with lead intake, Clearbit API enrichment, web scraping, and branded PDF generation triggered by a single form submission.',
     impact: 'Automated lead capture reducing research time by 80%.',
-    features: [
-      'Automated Clearbit API company research',
-      'Branded PDF audit reports with custom styling',
-      'Automated email delivery via SMTP',
-      'Google Sheets integration for lead logging',
-    ],
     techStack: ['Python', 'Flask', 'JavaScript', 'Clearbit API', 'SMTP'],
     demoLink: 'https://leadflow-pro-orpin.vercel.app',
     githubLink: 'https://github.com/rajatydv001/leadflow-pro',
@@ -119,12 +108,6 @@ export const projects = [
     problem: 'Financial services needed to identify at-risk customers before churning, but lacked actionable insights from raw data.',
     solution: 'Trained Logistic Regression and Decision Tree models on American Express data. Identified churn drivers through feature importance analysis with interactive Tableau dashboards.',
     impact: 'ML model analyzing customer data to predict churn — identified key drivers with published research paper.',
-    features: [
-      'Data extraction with SQL and Pandas',
-      'ML models with Logistic Regression and Decision Trees',
-      'Feature importance analysis for churn drivers',
-      'Interactive Tableau dashboards',
-    ],
     techStack: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Tableau'],
     demoLink: null,
     githubLink: 'https://github.com/rajatydv001/Churn_Prediction_Project',
@@ -151,7 +134,7 @@ export const experience = [
       'Implemented authentication, protected routes, RBAC, and application state management using Redux Toolkit, Context API, and custom hooks across client-facing applications.',
       'Improved application performance using code splitting, lazy loading, image optimization, and memoization; followed Git/GitHub, Agile/Scrum, code review, testing, CI/CD, and Vercel deployment workflows.',
     ],
-    technologies: ['React', 'Next.js', 'TypeScript', 'Redux Toolkit', 'Context API', 'Tailwind CSS', 'REST APIs', 'Vercel'],
+    technologies: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Redux Toolkit', 'Context API', 'Tailwind CSS', 'REST APIs', 'PostgreSQL', 'Prisma', 'Vercel'],
   },
   {
     id: 2,
@@ -190,12 +173,11 @@ export const stackCategories = [
   {
     title: 'Frontend',
     items: [
-      { name: 'React', icon: 'react' },
+      { name: 'React.js', icon: 'react' },
       { name: 'Next.js', icon: 'nextjs' },
       { name: 'TypeScript', icon: 'typescript' },
       { name: 'JavaScript', icon: 'javascript' },
       { name: 'Redux Toolkit', icon: 'react' },
-      { name: 'Context API', icon: 'react' },
       { name: 'Tailwind CSS', icon: 'tailwind' },
       { name: 'HTML5 / CSS3', icon: 'html5' },
     ],
@@ -205,10 +187,8 @@ export const stackCategories = [
     items: [
       { name: 'Node.js', icon: 'nodejs' },
       { name: 'Express.js', icon: 'nodejs' },
-      { name: 'Python', icon: 'python' },
-      { name: 'Flask', icon: 'flask' },
       { name: 'REST APIs', icon: 'api' },
-      { name: 'NextAuth', icon: 'lock' },
+      { name: 'Authentication', icon: 'lock' },
       { name: 'JWT', icon: 'lock' },
       { name: 'OAuth', icon: 'lock' },
       { name: 'RBAC', icon: 'lock' },
@@ -223,18 +203,70 @@ export const stackCategories = [
     ],
   },
   {
-    title: 'Tools',
+    title: 'Architecture',
+    items: [
+      { name: 'API Design', icon: 'api' },
+      { name: 'System Architecture', icon: 'database' },
+      { name: 'Scalability', icon: 'database' },
+      { name: 'Caching', icon: 'database' },
+      { name: 'Performance', icon: 'play' },
+    ],
+  },
+  {
+    title: 'Tools / AI',
     items: [
       { name: 'Git', icon: 'git' },
-      { name: 'Vite', icon: 'vite' },
+      { name: 'GitHub', icon: 'git' },
       { name: 'Vercel', icon: 'vercel' },
-      { name: 'GSAP', icon: 'play' },
-      { name: 'Framer Motion', icon: 'sparkle' },
-      { name: 'Stripe', icon: 'credit' },
+      { name: 'Vite', icon: 'vite' },
       { name: 'Jest', icon: 'play' },
       { name: 'React Testing Library', icon: 'play' },
       { name: 'Postman', icon: 'api' },
       { name: 'CI/CD', icon: 'git' },
+      { name: 'ESLint', icon: 'play' },
+      { name: 'OpenAI', icon: 'sparkle' },
     ],
+  },
+];
+
+export const certificates = [
+  {
+    title: 'Full Stack Developer Course',
+    issuer: 'Simplilearn SkillUp',
+    category: 'Full Stack Development',
+    credentialId: '10691420',
+    featured: true,
+  },
+  {
+    title: 'Namaste JavaScript',
+    issuer: 'NamasteDev.com',
+    category: 'JavaScript',
+    credentialId: '6B9EEF551956E7E863C168E684B',
+  },
+  {
+    title: 'Namaste React',
+    issuer: 'NamasteDev.com',
+    category: 'React.js',
+    credentialId: '6B9EEF551956E7E863C168E61D5',
+  },
+  {
+    title: 'Getting Started with NodeJS',
+    issuer: 'Simplilearn',
+    category: 'Node.js',
+    credentialId: '10690783',
+  },
+  {
+    title: 'JavaScript Essential Training',
+    issuer: 'LinkedIn Learning',
+    category: 'JavaScript',
+    date: 'February 2026',
+    credentialId: '08f44b1684e6197828fed0074ec11a7be2fa9dc62e4b1d512c1d58515cf9281c',
+  },
+  {
+    title: 'Learning Git and GitHub',
+    issuer: 'LinkedIn Learning',
+    category: 'Git / GitHub',
+    date: 'February 2026',
+    credentialId: 'c8c8b7d5cd4df81e70cc4e0f3c9f2b5e2f53f1a0681fbcc1c516def207010fac',
   },
 ];
